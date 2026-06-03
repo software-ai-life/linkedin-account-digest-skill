@@ -1,0 +1,4 @@
+interface:
+  display_name: "LinkedIn Account Digest"
+  short_description: "Monitor selected LinkedIn accounts and email new public posts."
+  default_prompt: "Use $linkedin-account-digest to check monitored LinkedIn accounts and prepare today's email digest."
