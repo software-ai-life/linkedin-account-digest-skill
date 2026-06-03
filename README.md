@@ -22,7 +22,7 @@ The default watchlist is stored in `references/accounts.md`:
   - English summary
   - direct original URL
 - Suppresses email when no new posts are found.
-- Sends a short bilingual failure report when retrieval or Gmail delivery fails.
+- Sends a short bilingual failure report when retrieval or email delivery fails.
 
 ## Files
 
@@ -39,10 +39,10 @@ After installing this folder under your Codex skills directory, restart Codex an
 Use $linkedin-account-digest to check monitored LinkedIn accounts and prepare today's email digest.
 ```
 
-For scheduled delivery, use a Codex automation. The original setup used:
+For scheduled delivery, use a Codex automation. Recommended behavior:
 
-- schedule: daily at 09:00 Asia/Taipei
-- recipient: `situn50627@gmail.com`
+- schedule: daily at 09:00 in your local timezone
+- recipient: configure privately in the automation prompt, not in this repository
 - behavior: send only when new posts are found
 
 ## State
@@ -54,6 +54,10 @@ The dedupe script stores seen post keys at:
 ```
 
 Do not commit the runtime `state/` directory unless you intentionally want to share seen-post history.
+
+## Security Notes
+
+Do not commit private recipient addresses, API keys, OAuth tokens, cookies, account IDs, or runtime state. Keep credentials in Codex connector configuration, Composio connection settings, or local automation prompts.
 
 ## Limitations
 
