@@ -22,7 +22,7 @@ Default targets:
 ## Workflow
 
 1. Determine the check window.
-   - For a scheduled daily run, use the user's local day in Asia/Taipei unless the prompt gives another timezone.
+   - For a scheduled daily run, use the user's local day unless the prompt gives another timezone.
    - For an ad hoc run, use the last 24 hours unless the user asks for another range.
 
 2. Fetch public account and post data.
@@ -46,14 +46,14 @@ Default targets:
 
 5. Send or draft email.
    - Use an active Gmail connector or Composio `GMAIL_SEND_EMAIL` when available.
-   - If Gmail is unavailable, produce an email-ready subject and body instead.
-   - For this user's default workflow, send to `situn50627@gmail.com` only when automatic sending is explicitly requested or already configured by an automation.
+   - If email is unavailable or the recipient is unknown, produce an email-ready subject and body instead.
+   - Keep private recipient addresses in the user's prompt, local automation, or connector settings; do not hard-code them in this skill.
    - Suggested subject: `LinkedIn Digest / LinkedIn account post digest - YYYY-MM-DD`.
 
 6. Failure handling.
-   - If LinkedIn/public search retrieval fails for every target, send a short bilingual failure report if Gmail is available.
+   - If LinkedIn/public search retrieval fails for every target, send a short bilingual failure report if email is available.
    - If only some targets fail, include those failures under `Notes`.
-   - If Gmail send fails, report the failure and preserve fetched post state only if a digest was successfully sent or the user explicitly approves marking posts as seen.
+   - If email send fails, report the failure and preserve fetched post state only if a digest was successfully sent or the user explicitly approves marking posts as seen.
 
 ## Email Format
 
@@ -82,5 +82,6 @@ Notes
 
 - Treat LinkedIn automation as sensitive: do not connect, follow, message, endorse, react, comment, or post from this skill unless the user explicitly asks.
 - Do not scrape private or login-only data.
+- Do not commit private recipient addresses, API keys, OAuth tokens, cookies, account IDs, or runtime state.
 - Prefer direct LinkedIn post URLs when available.
-- Preserve the state file; it prevents duplicate daily emails.
+- Preserve the state file locally; it prevents duplicate daily emails.
